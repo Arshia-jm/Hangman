@@ -18,26 +18,26 @@ function setUnderScores() {
     result = mappedWord.join("");
     document.getElementById("clue").innerHTML = `<p>${result}</p>`
 }
-
+// checks if you won shows the winning photo
 function checkIfWon() {
     if (randomItem === result) {
         document.getElementById("winner").querySelector("p").style.display = "block";
         document.getElementById("image").querySelector("img").src = "assets/winner.png";
     }
 }
-
+// check if you loses, shows the correct answer
 function checkIflost() {
     if (mistakes === 6) {
         document.getElementById("gameover").querySelector("p").style.display = "block";
         document.getElementById("clue").innerHTML = `<p>Random word is: ${randomItem}</p>`
     }
 }
-
+// Shows the next photo if you make a mistake
 function updateHangmanPicture() {
     const image = document.getElementById("image").querySelector("img");
     image.src = `assets/hangman${mistakes}.png`
 }
-
+// Checks if the entered letter is correct or not
 function letterHandler(letter) {
     letter = letter.toLowerCase();
     clicked.indexOf(letter) === -1 ? clicked.push(letter) : null;
@@ -51,11 +51,11 @@ function letterHandler(letter) {
         updateHangmanPicture()
     }
 }
-
+// Input letter by click
 function buttonHandler(event) {
     letterHandler(event.target.id)
 }
-
+// Input letter with key
 function keyHandler(event) {
     letterHandler(event.key)
 }
